@@ -15,10 +15,10 @@ import lombok.RequiredArgsConstructor;
 public class LocationWeatherController {
   private final LocationWeatherAvgService service;
 
-  @PutMapping("/{location}/{temp}")
+  @PostMapping("/{location}/{temp}")
   public ResponseEntity<LocationWeatherDto> updateWeather(@PathVariable String location,
     @PathVariable double temp) {
 
-    return new ResponseEntity<>(service.update(location, temp), HttpStatus.OK);
+    return new ResponseEntity<>(service.changeAvgTemp(location, temp), HttpStatus.OK);
   }
 }
