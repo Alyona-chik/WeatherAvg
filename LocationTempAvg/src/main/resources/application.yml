@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/weather
+    username: root
+    password: zaq123wsx
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+  application:
+    name: weather-service
+
+server:
+  port: 8090
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    fetch-registry: true
+  instance:
+    preferIpAddress: true
