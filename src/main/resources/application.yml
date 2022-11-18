@@ -7,3 +7,14 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 100000
+          strategy: THREAD
+ribbon:
+  ReadTimeout: 60000
+  connection-timeout: 3000

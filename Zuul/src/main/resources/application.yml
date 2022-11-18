@@ -20,12 +20,29 @@ zuul:
     weather-service:
       serviceId: weather-service
       path: /weather/**
-
   host:
-    socket-timeout-millis: 30000
+    time-to-live: -1
+    connect-timeout-millis: 5000
+    max-per-route-connections: 10000
+    max-total-connections: 5000
+    socket-timeout-millis: 60000
+  semaphore:
+    max-semaphores: 500
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 100000
+          strategy: THREAD
+ribbon:
+  ReadTimeout: 60000
+  connection-timeout: 3000

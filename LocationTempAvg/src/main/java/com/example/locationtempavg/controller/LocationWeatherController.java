@@ -18,7 +18,12 @@ public class LocationWeatherController {
   @PostMapping("/{location}/{temp}")
   public ResponseEntity<LocationWeatherDto> updateWeather(@PathVariable String location,
     @PathVariable double temp) {
-
-    return new ResponseEntity<>(service.changeAvgTemp(location, temp), HttpStatus.OK);
+    LocationWeatherDto locationWeatherDto = null;
+    try {
+      locationWeatherDto = service.changeAvgTemp(location, temp);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return new ResponseEntity<>(locationWeatherDto, HttpStatus.OK);
   }
 }
