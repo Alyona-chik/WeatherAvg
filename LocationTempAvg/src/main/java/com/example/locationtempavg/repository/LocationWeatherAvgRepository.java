@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.repository.CrudRepository;
 
 public interface LocationWeatherAvgRepository extends CrudRepository<LocationWeatherAvg, Long> {
-  @Lock(LockModeType.PESSIMISTIC_READ)
+  @Lock(LockModeType.PESSIMISTIC_WRITE)
   Optional<LocationWeatherAvg> findByLocation(String location);
 }
